@@ -1,0 +1,1 @@
+/home/hazem/.config/i3

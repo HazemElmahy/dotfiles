@@ -15,6 +15,9 @@ Plug 'vim-utils/vim-husk'
 Plug 'freitass/todo.txt-vim'
 Plug 'mboughaba/i3config.vim'
 Plug 'preservim/nerdcommenter'
+Plug 'francoiscabrol/ranger.vim'
+Plug 'tpope/vim-surround'
+Plug 'vim-syntastic/syntastic'
 
 call plug#end()
 
@@ -31,6 +34,7 @@ colorscheme molokai
 " au ColorScheme = molokai hi Normal ctermbg=None
 set mouse=a
 set showcmd
+set formatoptions-=croF
 
 "Closing brackets
 " inoremap " ""<left>
@@ -77,7 +81,11 @@ hi DiffText     cterm=none    ctermfg=232          ctermbg=217
 cnoremap <C-F> <Right
 cnoremap <C-B> <Left>
 
-set expandtab ts=4 sw=4 ai
+set expandtab ts=4 sw=4 sts=4 ai
+set backspace=indent,eol,start
+set hidden
+set incsearch
+set scrolloff=8
 
 
 let mapleader="\\"
@@ -110,3 +118,28 @@ let g:NERDTrimTrailingWhitespace = 1
 
 " Enable NERDCommenterToggle to check all selected lines is commented or not
 let g:NERDToggleCheckAllLines = 1
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+nnoremap <leader>s :call SyntasticToggle()<CR>
+
+
+let g:syntastic_is_open = 0
+function! SyntasticToggle()
+if g:syntastic_is_open == 1
+    lclose
+    let g:syntastic_is_open = 0
+else
+    Errors
+    let g:syntastic_is_open = 1
+endif
+endfunction
+
