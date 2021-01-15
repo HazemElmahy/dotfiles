@@ -23,18 +23,17 @@ call plug#end()
 
 
 " Emmet Shortcut 
-let g:user_emmet_mode= 'n' "enables only in normal mode.
+let g:user_emmet_mode= 'n' 
 let g:user_emmet_leader_key = ','
 
 "-------------
 set number relativenumber
 let &t_ut=''
 colorscheme molokai
-"let g:molokai_original = 1
-" au ColorScheme = molokai hi Normal ctermbg=None
 set mouse=a
 set showcmd
 set formatoptions-=croF
+autocmd VimLeave * call system("xsel -ib", getreg('+'))
 
 "Closing brackets
 " inoremap " ""<left>
