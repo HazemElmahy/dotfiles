@@ -35,6 +35,9 @@ set showcmd
 set formatoptions-=croF
 autocmd VimLeave * call system("xsel -ib", getreg('+'))
 
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
+
 "Closing brackets
 " inoremap " ""<left>
 " inoremap ' ''<left>
