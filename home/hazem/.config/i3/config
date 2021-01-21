@@ -166,14 +166,14 @@ bindsym Print exec flameshot gui
 bindsym $mod+Shift+Return exec brave-browser
 
 # Shortcuts
-bindsym $mod+Shift+u exec brave-browser
-assign [class="brave-browser"] 2
+bindsym $mod+u exec brave-browser
+assign [class="Brave-browser"] $ws2
 
-bindsym $mod+Shift+i exec thunar
-assign [class="thunar"] 2
+bindsym $mod+i exec thunar
+assign [class="Thunar"] $ws4
 
-bindsym $mod+Shift+o exec code 
-assign [class="code"] 2
+bindsym $mod+o exec code 
+assign [class="Code"] $ws3
 
 bindsym $mod+Shift+p exec kitty -d ~/Music -e cmus
 
