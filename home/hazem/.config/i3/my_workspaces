@@ -1,5 +1,0 @@
-#!/bin/sh
-i3-msg -t subscribe -m '["workspace"]' | {
-	i3-msg -t get_workspaces;
-	while read; do i3-msg -t get_workspaces; done;
-}
