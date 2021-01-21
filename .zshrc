@@ -71,6 +71,8 @@ ZSH_THEME="kennethreitz"
 plugins=(
 	git
 	zsh-autosuggestions
+    zsh-syntax-highlighting
+    zsh-system-clipboard
 	)
 
 source $ZSH/oh-my-zsh.sh
@@ -102,18 +104,49 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export TERM=xterm-256color
+export EDITOR=vim
+
 
 if [ -n "$VIRTUAL_ENV" ]; then
 . "$VIRTUAL_ENV/bin/activate"
-#else
-#workon default
+# else
+# workon default
 fi
 
 setopt extendedglob
-source /home/hazem/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 #Autocomplete hidden files
-_comp_options+=(globdots)
+#_comp_options+=(globdots)
+
+
+export PATH=/home/hazem/scripts:$PATH
+
+# vi-mode 
+
+vi-cmd () {
+  local REPLY
+
+  # Read the next keystroke, look it up in the `vicmd` keymap and, if successful,
+  # evalute the widget bound to it in the context of the `vicmd` keymap.
+  zle .read-command -K vicmd && 
+    zle $REPLY -K vicmd
+}
+
+# Make a keyboard widget out of the function above.
+zle -N vi-cmd
+
+# Bind the widget to Ctrl-O in the `viins` keymap.
+bindkey -v '^O' vi-cmd
+
+export KEYTIMEOUT=1
+
+
+bindkey "^W" backward-kill-word 
+bindkey "^H" backward-delete-char      # Control-h also deletes the previous char
+bindkey "^U" backward-kill-line  
+
+bindkey "^R" history-incremental-search-backward
+bindkey "^S" history-incremental-search-forward
 
 function zle-line-init zle-keymap-select {
     RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
@@ -123,3 +156,8 @@ function zle-line-init zle-keymap-select {
 
 zle -N zle-line-init
 zle -N zle-keymap-select
+
+# autosuggest
+bindkey '^ ' autosuggest-accept
+
+source /home/hazem/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
