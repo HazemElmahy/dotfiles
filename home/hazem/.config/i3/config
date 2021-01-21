@@ -153,8 +153,6 @@ bar {
 bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
 
-bindsym $mod+s exec exec --no-startup-id pactl set-sink-volume 2 +5% #increase sound volume
-bindsym $mod+a exec exec --no-startup-id pactl set-sink-volume 2 -5% #decrease sound volume
 
 
 #Move workspace to left or right
@@ -169,8 +167,11 @@ bindsym $mod+Shift+Return exec brave-browser
 
 # Shortcuts
 bindsym $mod+Shift+u exec brave-browser
+assign [class="brave-browser"] 2
 bindsym $mod+Shift+i exec thunar
+assign [class="thunar"] 2
 bindsym $mod+Shift+o exec code 
+assign [class="code"] 2
 bindsym $mod+Shift+p exec kitty -d ~/Music -e cmus
 
 bindsym $mod+Shift+q exec ~/.config/i3blocks/shutdown_menu/shutdown_menu
