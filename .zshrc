@@ -3,6 +3,8 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/hazem/.oh-my-zsh"
+export EDITOR=vim
+
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -104,7 +106,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export TERM=xterm-256color
-export EDITOR=vim
 
 
 if [ -n "$VIRTUAL_ENV" ]; then
@@ -120,6 +121,7 @@ setopt extendedglob
 
 
 export PATH=/home/hazem/scripts:$PATH
+export PATH=/snap/bin:$PATH
 
 # vi-mode 
 
@@ -159,5 +161,6 @@ zle -N zle-keymap-select
 
 # autosuggest
 bindkey '^ ' autosuggest-accept
+bindkey '^f' vi-forward-word
 
 source /home/hazem/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

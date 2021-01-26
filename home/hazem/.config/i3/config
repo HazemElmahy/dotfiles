@@ -4,9 +4,11 @@ font pango:Hack 8.5
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec kitty -e tmux
+bindsym $mod+Shift+Return exec kitty
+
 bindsym $mod+Shift+c kill
-bindsym $mod+d exec rofi -show run
+bindsym $mod+d exec dmenu_run
 bindsym $mod+Shift+d exec rofi -show drun
 
 # change focus
@@ -163,14 +165,13 @@ exec_always --no-startup-id "setxkbmap -layout us,ar -option 'grp:win_space_togg
 exec_always --no-startup-id "nm-applet"
 
 bindsym Print exec flameshot gui
-bindsym $mod+Shift+Return exec brave-browser
 
 # Shortcuts
-bindsym $mod+u exec brave-browser
-assign [class="Brave-browser"] $ws2
+bindsym $mod+u exec ~/Downloads/firefox/firefox-bin
+assign [class="Firefox"] $ws2
 
-bindsym $mod+i exec thunar
-assign [class="Thunar"] $ws4
+bindsym $mod+i exec dolphin
+assign [class="dolphin"] $ws4
 
 bindsym $mod+o exec code 
 assign [class="Code"] $ws3
@@ -190,3 +191,7 @@ bindsym $mod+semicolon exec cmus-remote -C "seek -50"
 mode "cmus" {
     # TODO
 }
+
+# startup
+exec_always --no-startup-id "compton -b"
+exec_always --no-startup-id "feh --bg-fill ~/Pictures/wallpaper/crystal-huff-Qm_a41SczcQ-unsplash.jpg"
