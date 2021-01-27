@@ -1,5 +1,5 @@
-sudo apt install i3 xbacklight compton feh tmux zsh ranger cmus xclip kitty 
-# git-svn
+> i3 xbacklight compton feh tmux zsh ranger cmus xclip kitty git
+> git-svn xkb switch gh-cli 
 
 #i3blocks
 git clone https://github.com/vivien/i3blocks
