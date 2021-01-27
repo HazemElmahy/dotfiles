@@ -1,4 +1,4 @@
- i3 xbacklight compton feh tmux zsh ranger cmus xclip kitty git
+ i3 xbacklight compton feh tmux zsh ranger cmus xclip kitty git rofi
  git-svn xkb switch gh-cli 
 
 ## i3blocks
