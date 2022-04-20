@@ -1,0 +1,6 @@
+INDEX VERSION 1.131+/home/hazem/.config/Code/User/workspaceStorage/9820cdda4039b85bc28705da2aa227ee/redhat.java/jdt_ws/.metadata/.plugins/org.eclipse.jdt.core
+4013607337.index
+720074039.index
+1865797976.index
+442008100.index
+3842426239.index

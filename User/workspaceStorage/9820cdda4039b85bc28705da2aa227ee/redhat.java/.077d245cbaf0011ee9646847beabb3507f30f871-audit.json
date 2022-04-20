@@ -1,0 +1,14 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 2
+    },
+    "auditLog": "/home/hazem/.config/Code/User/workspaceStorage/9820cdda4039b85bc28705da2aa227ee/redhat.java/.077d245cbaf0011ee9646847beabb3507f30f871-audit.json",
+    "files": [
+        {
+            "date": 1631911207560,
+            "name": "/home/hazem/.config/Code/User/workspaceStorage/9820cdda4039b85bc28705da2aa227ee/redhat.java/client.log.2021-09-17",
+            "hash": "b690fea30bcca2d11188231352c7cdb4"
+        }
+    ]
+}

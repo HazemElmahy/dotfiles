@@ -1,0 +1,19 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 2
+    },
+    "auditLog": "/home/hazem/.config/Code/User/workspaceStorage/7fd148186771344bb35aff99d0f67a13/redhat.java/.c6ef69455ed27f64e7af639939b9bf828bdff04f-audit.json",
+    "files": [
+        {
+            "date": 1631062478923,
+            "name": "/home/hazem/.config/Code/User/workspaceStorage/7fd148186771344bb35aff99d0f67a13/redhat.java/client.log.2021-09-08",
+            "hash": "7c52c57015d68b23929cf723ee0fc839"
+        },
+        {
+            "date": 1631193433995,
+            "name": "/home/hazem/.config/Code/User/workspaceStorage/7fd148186771344bb35aff99d0f67a13/redhat.java/client.log.2021-09-09",
+            "hash": "f91cb5e20bd87ddcf85411f728990588"
+        }
+    ]
+}
