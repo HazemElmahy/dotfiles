@@ -3,6 +3,8 @@ set $mod Mod4
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:DejaVu 10
+for_window [all] title_window_icon on
+# bindsym $mod+q title_window_icon on
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -19,13 +21,13 @@ font pango:DejaVu 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec GLFW_IM_MODULE=ibus kitty
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+# bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -44,6 +46,8 @@ bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
+default_orientation vertical
+
 
 # split in horizontal orientation
 bindsym $mod+g split h
@@ -59,12 +63,18 @@ bindsym $mod+comma layout stacking
 bindsym $mod+period layout tabbed
 bindsym $mod+slash layout toggle split
 
+# Move to another monitor
+bindsym $mod+Shift+comma move workspace to output left
+bindsym $mod+Shift+period move workspace to output right
+
+
 # toggle tiling / floating
 bindsym $mod+Shift+f floating toggle
 bindsym $mod+Shift+d floating enable, resize set 50 ppt 59 ppt, move position 960 px 0 px
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+Shift+g focus mode_toggle
+
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -74,16 +84,16 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+set $ws1 "1主"
+set $ws2 "2二"
+set $ws3 "3三"
+set $ws4 "4楽"
+set $ws5 "5五"
+set $ws6 "6六"
+set $ws7 "7七"
+set $ws8 "8八"
+set $ws9 "9九"
+set $ws10 "10十"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -137,6 +147,8 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# POWER MODE{{{
+
 set $shutdown_mode "Power mode: ╭ q ╮╰ Poweroff ╯  ╭ w ╮╰ Reboot ╯  ╭ e ╮╰ Logout ╯  ╭ r ╮╰ Suspend ╯"
 
 mode $shutdown_mode {
@@ -151,87 +163,265 @@ mode $shutdown_mode {
 }
 
 bindsym $mod+Shift+q mode $shutdown_mode 
+# }}}
 
 
 
+# COLORS{{{
 
 # class                 border  bground text    indicator child_border
-client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
-client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
-client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
-client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
-client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+# client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+# client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+# client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+# client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+# client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+#
+# client.background       #F8F8F2
 
-client.background       #F8F8F2
+client.focused          #3C3C3C #FFFFFF #000000 #3C3C3C   #3C3C3C
+client.focused_inactive #3C3C3C #3C3C3C #FFFFFF #484E50   #5F676A
+client.unfocused        #3C3C3C #222222 #bbbbbb #292D2E   #222222
+client.urgent           #3C3C3C #900000 #FFFFFF #900000   #900000
+client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
 
+client.background       #FFFFFF
+# }}}
+
+# BAR{{{
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        separator_symbol "┇"
-        status_command i3status
+    # font pango:Unifont CSUR 10
+    separator_symbol "┇"
+    status_command ~/myi3bar.sh
+    strip_workspace_numbers yes
 
-          colors {
-    background #282A36
-    statusline #F8F8F2
-    separator  #44475A
+    colors {
+        # background #282A36
+        background #1e1e1e
+        statusline #F8F8F2
+        separator  #44475A
 
-    focused_workspace  #44475A #44475A #F8F8F2
-    active_workspace   #282A36 #44475A #F8F8F2
-    inactive_workspace #282A36 #282A36 #BFBFBF
-    urgent_workspace   #FF5555 #FF5555 #F8F8F2
-    binding_mode       #FF5555 #FF5555 #F8F8F2
+        # focused_workspace  #44475A #44475A #F8F8F2
+        # active_workspace   #282A36 #44475A #F8F8F2
+        # inactive_workspace #282A36 #282A36 #BFBFBF
+        # urgent_workspace   #FF5555 #FF5555 #F8F8F2
+        # binding_mode       #FF5555 #FF5555 #F8F8F2
+        # item             #border #bg     #text
+        focused_workspace  #44475A #FFFFFF #000000
+        active_workspace   #282A36 #222222 #FFFFFF
+        inactive_workspace #282A36 #222222 #888888
+        urgent_workspace   #FF5555 #900000 #FFFFFF
+        binding_mode       #FF5555 #900000 #FFFFFF
   }
 }
+# }}}
 
-## MULTIMEDIA CONTROLS
+# bindsym $mod+d exec "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#FFFFFF' -sf '#000000' -fn 'monospace-10'"
+bindsym $mod+d exec "i3-dmenu-desktop"
+
+## MULTIMEDIA CONTROLS{{{
 # Pulse Audio controls
 # bindsym 0xffc0 exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
 # bindsym 0xffbf exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
 # bindsym 0xffbe exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+# SINK=$(pactl list sinks | grep 'Name:' | cut -d ":" -f2 | sed 's/ //g')
 
-# Sreen brightness controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/scripts/vol.sh +
+bindsym $mod+quotedbl exec --no-startup-id ~/scripts/vol.sh +
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/scripts/vol.sh -
+bindsym $mod+colon exec --no-startup-id ~/scripts/vol.sh -
+bindsym XF86AudioMute exec --no-startup-id ~/scripts/vol.sh mute
+bindsym $mod+bracketright  exec --no-startup-id ~/scripts/vol.sh mute
+# }}}
+
+# Sreen brightness controls{{{
 # bindsym 0xffc9 exec xbacklight -inc 20 # increase screen brightness
 # bindsym 0xffc8 exec xbacklight -dec 20 # decrease screen brightness
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 && notify-send -r 3 -t 1000 " +20% $(~/scripts/bright_level.sh)"
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 && notify-send -r 3 -t 1000 " -20% $(~/scripts/bright_level.sh)"
+# }}}
 
 # Touchpad controls
-bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
+# bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
 
-# Media player controls
+# Media player controls{{{
 bindsym XF86AudioPlay exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+# }}}
 
-## LAYOUT
+## KEYBOARD LAYOUT{{{
 # done from /etc/default/keyboard.
 exec_always --no-startup-id "setxkbmap -layout us,ar -variant basic,basic"
 exec_always --no-startup-id "setxkbmap -option 'grp:win_space_toggle'"
+exec_always --no-startup-id "compton -b"
+exec_always --no-startup-id "notify-send Reloaded"
 
 
-## WALLPAPER
-exec feh --bg-fill ~/Desktop/wallpapers/cmyk-umbrella.png
+# }}}
 
-## APP SHORTCUTS
-bindsym $mod+u exec notify-send -u low "starting brave" && brave-browser
-bindsym $mod+i exec notify-send -u low "starting thunar" && thunar
+
+## WALLPAPER{{{
+exec feh --recursive --bg-fill --randomize ~/Desktop/wallpapers
+# }}}
+
+## APPs SHORTCUTS{{{
+bindsym $mod+Shift+u exec notify-send -u low "starting Firefox" && firefox
+bindsym $mod+u exec notify-send -u low "starting Brave" && brave-browser
+bindsym $mod+i exec notify-send -u low "starting Thunar" && thunar
 bindsym $mod+c exec flameshot && flameshot gui
-bindsym $mod+x exec flameshot screen -c
+# bindsym $mod+x exec flameshot screen -c
 # bindsym $mod+p exec notify-send -u low "starting argos" && argos-translate-gui &
 bindsym $mod+o exec notify-send -u low "starting anki" && anki
 bindsym $mod+p exec notify-send -u low "starting calibre" && calibre
+bindsym $mod+e exec gvim /home/hazem/Personal/nb
+# }}}
 
 
-## STARTUP
+## STARTUP{{{
 exec --no-startup-id dunst &
 exec --no-startup-id nm-applet &
 # exec --no-startup-id fcitx5 &
 exec --no-startup-id flameshot &
+# }}}
 
-# SHORCUTS
-bindsym $mod+t exec ~/scripts/vlc-title.sh
+# SCRIPTS SHORTCUTS{{{
+# bindsym $mod+t exec ~/scripts/vlc-title.sh
+bindsym $mod+Shift+z exec ~/.screenlayout/2_sm_screens.sh
+bindsym $mod+x exec ~/scripts/save_words.sh
+bindsym $mod+equal exec python3 ~/scripts/type.py "+"
+bindsym $mod+minus exec python3 ~/scripts/type.py "-"
+bindsym $mod+Shift+bracketleft exec python3 ~/scripts/type.py "D"
+bindsym $mod+Shift+bracketright exec python3 ~/scripts/type.py "A"
+bindsym $mod+Shift+equal exec python3 ~/scripts/type.py "="
+# }}}
+
+mode "mouse" {
+
+	# set your three speeds here
+
+	set $slow 1
+	set $quick 10
+	set $fast 50
+
+	# Mouse movement (slow/fine-tuned) -- vim keybindings
+
+	bindsym h exec xdotool mousemove_relative -- -$slow 0
+	bindsym j exec xdotool mousemove_relative 0 $slow
+	bindsym k exec xdotool mousemove_relative -- 0 -$slow
+	bindsym l exec xdotool mousemove_relative $slow 0
+
+	# Mouse movement (slow/fine-tuned) -- arrow keys
+
+	bindsym Left exec xdotool mousemove_relative -- -$slow 0
+	bindsym Down exec xdotool mousemove_relative 0 $slow
+	bindsym Up exec xdotool mousemove_relative -- 0 -$slow
+	bindsym Right exec xdotool mousemove_relative $slow 0
+
+	# Mouse movement (quicker) -- vim keybindings
+
+	bindsym Shift+h exec xdotool mousemove_relative -- -$quick 0
+	bindsym Shift+j exec xdotool mousemove_relative 0 $quick
+	bindsym Shift+k exec xdotool mousemove_relative -- 0 -$quick
+	bindsym Shift+l exec xdotool mousemove_relative $quick 0
+
+	# Mouse movement (quicker) -- arrow keys
+
+	bindsym Shift+Left exec xdotool mousemove_relative -- -$quick 0
+	bindsym Shift+Down exec xdotool mousemove_relative 0 $quick
+	bindsym Shift+Up exec xdotool mousemove_relative -- 0 -$quick
+	bindsym Shift+Right exec xdotool mousemove_relative $quick 0
+
+	# Mouse movement (fast) -- vim keybindings
+
+	bindsym $mod+h exec xdotool mousemove_relative -- -$fast 0
+	bindsym $mod+j exec xdotool mousemove_relative 0 $fast
+	bindsym $mod+k exec xdotool mousemove_relative -- 0 -$fast
+	bindsym $mod+l exec xdotool mousemove_relative $fast 0
+
+	# Mouse movement (fast) -- arrow keys
+
+	bindsym $mod+Left exec xdotool mousemove_relative -- -$fast 0
+	bindsym $mod+Down exec xdotool mousemove_relative 0 $fast
+	bindsym $mod+Up exec xdotool mousemove_relative -- 0 -$fast
+	bindsym $mod+Right exec xdotool mousemove_relative $fast 0
+
+	# Left Click
+	bindsym f exec xdotool click 1
+
+	# Middle Click
+	bindsym d exec xdotool click 2
+
+	# Right Click
+	bindsym s exec xdotool click 3
+
+	# Left Click-and-drag
+	bindsym Shift+f exec xdotool mousedown 1
+
+	# Middle Click-and-drag
+	bindsym Shift+d exec xdotool mousedown 2
+
+	# Right Click-and-drag
+	bindsym Shift+s exec xdotool mousedown 3
+
+	# Left Drag release
+	bindsym $mod2+f exec xdotool mouseup 1
+
+	# Middle Drag release
+	bindsym $mod2+d exec xdotool mouseup 2
+
+	# Right Drag release
+	bindsym $mod2+s exec xdotool mouseup 3
+
+
+	# return to normal keybindings -- IMPORTANT!!
+
+	bindsym Escape mode "default"
+}
+
+bindsym $mod+Shift+m mode "mouse"
+
+
+
+# temp
+bindsym $mod+Shift+a exec home/hazem/scripts/mondays/save_mouse_loc.sh
+# bindsym $mod+z exec ~/scripts/mondays/mouse_locs.sh
+
+for_window [class="mupen64plus"] floating enable, resize set 1500 px 100 ppt, move position 0 px 0 px
+for_window [instance="bard.google.com"] floating enable, resize set 30 ppt 50 ppt, move position 0 ppt 50 ppt, border pixel 2
+for_window [instance="translate.google.com"] floating enable, resize set 40 ppt 50 ppt, move position 30 ppt 50 ppt, border pixel 2
+for_window [instance="keep.google.com"] floating enable, resize set 30 ppt 50 ppt, move position 70 ppt 50 ppt, border pixel 2
+
+# CMUS REMOTE{{{
+set $cmus_mode "Cmus Remote: ╭ p ╮╰ Play ╯  ╭ o ╮╰ Pause ╯ ╭ n/b ╮╰ next/prev ╯  ╭ j/k ╮╰ vol -10%/+10% ╯ ╭ h/l ╮╰ seek -10/+10 ╯"
+
+
+mode $cmus_mode {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym p exec cmus-remote --play
+        bindsym o exec cmus-remote --pause
+        bindsym n exec cmus-remote --next
+        bindsym b exec cmus-remote --prev
+        bindsym k exec cmus-remote --vol +10%
+        bindsym j exec cmus-remote --vol -10%
+        bindsym l exec cmus-remote --seek +10
+        bindsym h exec cmus-remote --seek -10
+
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+bracketleft mode "defaut"
+        bindsym $mod+m mode "default"
+}
+
+bindsym $mod+m mode $cmus_mode
+# }}}

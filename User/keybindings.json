@@ -1,9 +1,1 @@
-// Place your key bindings in this file to override the defaults
-[
-    {
-    "key": "ctrl+i",
-    "command": "selectNextSuggestion",
-    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
-    }
-
-]
+[]

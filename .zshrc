@@ -192,11 +192,15 @@ zle -N kill-word
 LANG="en_US.utf8"
 export LANG
 export PATH=/home/hazem/scripts:/home/hazem/.local/bin:/home/hazem/Downloads/apps/flutter/bin:$PATH
+export PATH="$PATH":"$HOME/.pub-cache/bin"
+export LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib
 export PATH=/snap/bin:$PATH
 export EDITOR=vim
 export TERMINAL=kitty
 export TERM=xterm-256color
-export GLFW_IM_MODULE=ibus
+# export GLFW_IM_MODULE=ibus
+export QT_STYLE_OVERIDE=GTK+
+export QT_QPA_PLATFORMTHEME=gtk2
 
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
@@ -223,10 +227,13 @@ precmd() { vcs_info }
 # Format the vcs_info_msg_0_ variable
 zstyle ':vcs_info:git:*' formats '%F{156}%b %F{154}%F{156} '
 
+#zstyle ':vcs_info:git:*' formats '%F{0}%b %F{0}%F{0} '
+
 # Set up the prompt (with git branch name)
 setopt PROMPT_SUBST
 # PROMPT='%n in ${PWD/#$HOME/~} ${vcs_info_msg_0_} > '
 PROMPT='%B%F{220}%n: ${vcs_info_msg_0_}%F{253}%~ %F{244}» '
+# PROMPT='%B%F{0}%n: ${vcs_info_msg_0_}%F{0}%~ %F{0}» '
 
 # }}}
 
