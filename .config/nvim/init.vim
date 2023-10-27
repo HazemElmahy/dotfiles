@@ -9,7 +9,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'ap/vim-css-color'
 Plug 'vim-utils/vim-husk'
 Plug 'mboughaba/i3config.vim'
-Plug 'preservim/nerdcommenter'
+" Plug 'preservim/nerdcommenter'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'dense-analysis/ale'
@@ -39,6 +40,11 @@ Plug 'Glench/Vim-Jinja2-Syntax'
 
 " JS
 Plug 'pangloss/vim-javascript'
+Plug 'MaxMEllon/vim-jsx-pretty'
+" Plug 'suy/vim-context-commentstring'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+
 
 " PYTHON
 Plug 'nvie/vim-flake8'
@@ -231,7 +237,7 @@ let g:NERDToggleCheckAllLines = 1"}}}
 
 " Syntastic{{{
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
