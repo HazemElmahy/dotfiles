@@ -13,6 +13,8 @@ if [[ "$1" == "backup" ]]; then
     cp -r /home/hazem/.config/kitty /home/hazem/dotfiles/.config
     cp -r /home/hazem/.config/ranger /home/hazem/dotfiles/.config
     cp -r /home/hazem/.config/i3 /home/hazem/dotfiles/.config/
+    cp -r /home/hazem/.local/share/nvim/ /home/hazem/dotfiles/.config/
+    cp -r /home/hazem/.config/nvim/ /home/hazem/dotfiles/.config/
 
 elif [[ "$1" == "install" ]]; then
     echo "TODO"

@@ -1,5 +1,17 @@
 {
-    "diagnostic.checkCurrentLine": true,
-    "python.pythonPath": "/home/hazem/.virtualenvs/learn/bin/python",
-    "python.formatting.provider": "black"
+  "diagnostic.checkCurrentLine": true,
+  "python.pythonPath": "/home/hazem/.virtualenvs/learn/bin/python",
+  "python.formatting.provider": "black",
+  "languageserver": {
+    "ccls": {
+      "command": "ccls",
+      "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
+      "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
+      "initializationOptions": {
+        "cache": {
+          "directory": "/tmp/ccls"
+        }
+      }
+    }
+  }
 }
