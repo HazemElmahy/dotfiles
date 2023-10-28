@@ -7,7 +7,7 @@ git_push() {
     read -p "Comment: " comment_msg
     git commit -m "$comment_msg"
     echo "COMMITED"
-    git push origin
+    git push
     echo "PUSHED"
 }
 
