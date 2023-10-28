@@ -1,6 +1,8 @@
 #!/bin/bash
 
 git_push() {
+    echo $HOME
+    echo $(whoami)
     git diff --name-only
     git add --all
     echo "ADDED"
@@ -28,6 +30,7 @@ if [[ "$1" == "backup" ]]; then
     cp -r /home/hazem/.local/share/nvim/ /home/hazem/dotfiles/.config/
     cp -r /home/hazem/.config/nvim/ /home/hazem/dotfiles/.config/
 
+    echo "HEREE"
     sudo -u hazem $(git_push)
 
 elif [[ "$1" == "install" ]]; then
