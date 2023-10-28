@@ -1,5 +1,17 @@
 #!/bin/bash
 
+git_push() {
+    git diff --name-only
+    git add --all
+    echo "ADDED"
+    read -p "Comment: " comment_msg
+    git commit -m "$comment_msg"
+    echo "COMMITED"
+    git push origin
+    echo "PUSHED"
+}
+
+
 if [[ "$1" == "backup" ]]; then
     mkdir /home/hazem/dotfiles/.config
     mkdir /home/hazem/dotfiles/.zsh
@@ -16,14 +28,7 @@ if [[ "$1" == "backup" ]]; then
     cp -r /home/hazem/.local/share/nvim/ /home/hazem/dotfiles/.config/
     cp -r /home/hazem/.config/nvim/ /home/hazem/dotfiles/.config/
 
-    git diff --name-only
-    git add --all
-    echo "ADDED"
-    read -p "Comment: " comment_msg
-    git commit -m "$comment_msg"
-    echo "COMMITED"
-    git push origin
-    echo "PUSHED"
+    sudo -u hazem $(git_push)
 
 elif [[ "$1" == "install" ]]; then
     echo "TODO"
