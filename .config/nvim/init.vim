@@ -10,16 +10,26 @@ Plug 'ap/vim-css-color'
 Plug 'vim-utils/vim-husk'
 Plug 'mboughaba/i3config.vim'
 " Plug 'preservim/nerdcommenter'
+
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-Plug 'dense-analysis/ale'
+Plug 'tpope/vim-fugitive'
+
 Plug 'mtdl9/vim-log-highlighting'
 Plug 'preservim/tagbar'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
-Plug 'ayu-theme/ayu-vim'
-Plug 'tpope/vim-fugitive'
+" Plug 'ayu-theme/ayu-vim'
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
+
+
+" LSP
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'dense-analysis/ale'
+
+
+" Colors
 Plug 'morhetz/gruvbox'
 
 " Plug 'SirVer/ultisnips'
@@ -544,3 +554,43 @@ function! ToggleHtmlDjangoFileType()
 endfunction
 
 
+" BUFFERS{{{
+
+" set termguicolors
+nnoremap gn :bn<CR>
+nnoremap gb :bp<CR>
+
+lua << EOF
+local bufferline = require('bufferline')
+require('bufferline').setup{
+options = {
+    separator_style='slant',
+    indicator = {
+        style='icon'
+    },
+    buffer_close_icon = '󰅖',
+    modified_icon = '●',
+    close_icon = '',
+    left_trunc_marker = '',
+    right_trunc_marker = '',
+    offsets = {
+        {
+            filetype = "NERDTree",
+              text = function()
+                return vim.fn.getcwd()
+              end,
+            highlight = "Directory",
+            separator = false,
+          text_align = "left",
+
+        }
+    },
+
+    },
+}
+EOF
+
+
+" nnoremap gb :call ToggleHtmlDjangoFileType()<CR>
+
+"}}}
