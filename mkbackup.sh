@@ -16,6 +16,12 @@ if [[ "$1" == "backup" ]]; then
     cp -r /home/hazem/.local/share/nvim/ /home/hazem/dotfiles/.config/
     cp -r /home/hazem/.config/nvim/ /home/hazem/dotfiles/.config/
 
+    git add --all
+    read -p "Comment: " comment_msg
+    echo $comment_msg
+    git commit -m $comment_msg
+    git push origin
+
 elif [[ "$1" == "install" ]]; then
     echo "TODO"
 

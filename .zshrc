@@ -270,7 +270,7 @@ alias ipy='ipython --TerminalInteractiveShell.editing_mode=vi'
 alias bh='echo 7500 | sudo tee -a /sys/class/backlight/intel_backlight/brightness'
 alias bm='echo 4000 | sudo tee -a /sys/class/backlight/intel_backlight/brightness'
 alias bl='echo 1000 | sudo tee -a /sys/class/backlight/intel_backlight/brightness'
-alias git_curr_branch=$(git -C "$1" branch | sed  '/^\*/!d;s/\* //')
+alias git_curr_branch="git rev-parse --abbrev-ref HEAD"
 alias dc="docker-compose -f docker-compose-hazem.yml"
 
 # }}}
