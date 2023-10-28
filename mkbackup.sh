@@ -30,8 +30,9 @@ if [[ "$1" == "backup" ]]; then
     cp -r /home/hazem/.local/share/nvim/ /home/hazem/dotfiles/.config/
     cp -r /home/hazem/.config/nvim/ /home/hazem/dotfiles/.config/
 
-    echo "HEREE"
-    sudo -u hazem $(git_push)
+    export -f git_push
+    su hazem -c "bash -c git_push"
+    exit 0
 
 elif [[ "$1" == "install" ]]; then
     echo "TODO"
