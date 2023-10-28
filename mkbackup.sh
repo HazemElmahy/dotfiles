@@ -3,8 +3,6 @@
 git_push() {
     git diff --name-only
     git add --all
-    eval `ssh-agent` 
-    ssh-add ~/.ssh/$(read -p "ssh:")
     echo "ADDED"
     read -p "Comment: " comment_msg
     git commit -m "$comment_msg"
