@@ -23,6 +23,9 @@ Plug 'sheerun/vim-polyglot'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
 
+Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'nvimdev/lspsaga.nvim'
+
 
 " LSP
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -31,6 +34,8 @@ Plug 'dense-analysis/ale'
 
 " Colors
 Plug 'morhetz/gruvbox'
+Plug 'folke/tokyonight.nvim'
+" Plug 'sainnhe/gruvbox-material'
 
 " Plug 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
@@ -212,7 +217,13 @@ set fillchars+=vert:│"}}}
 "let g:airline#extensions#tabline#left_sep = '❯'
 let g:airline#extensions#tagbar#flags = 'f'  " show full tag hierarchy
 let g:airline_theme='gruvbox'
+" let g:lightline = {'colorscheme': 'tokyonight'}
+
 let g:airline_powerline_fonts = 1
+let g:airline_section_z = airline#section#create(['%3p%%', 'linenr',  ':%3v'])
+
+" let g:airline_extensions = []
+
 "}}}
 
 
@@ -557,8 +568,10 @@ endfunction
 " BUFFERS{{{
 
 " set termguicolors
-nnoremap gn :bn<CR>
-nnoremap gb :bp<CR>
+nnoremap gn :BufferLineMoveNext<CR>
+nnoremap g<S-N> :BufferLineMovePrev<CR>
+nnoremap gb :BufferLineCycleNext<CR>
+nnoremap g<S-B> :BufferLineCyclePrev<CR>
 
 lua << EOF
 local bufferline = require('bufferline')
@@ -588,6 +601,8 @@ options = {
 
     },
 }
+
+require("ibl").setup()
 EOF
 
 
